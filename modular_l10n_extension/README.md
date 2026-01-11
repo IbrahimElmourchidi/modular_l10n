@@ -349,5 +349,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 <p align="center">
-  Made with ❤️ by <a href="https://utanium.org">Utanium</a>
+  Made with ❤️ by <a href="https://ibrahim.utanium.org">Utanium</a>
 </p>
