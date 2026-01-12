@@ -24,7 +24,6 @@ export interface ParsedModule {
 export class ArbParser {
     async parseModules(modules: Module[], supportedLocales: string[]): Promise<ParsedModule[]> {
         const parsedModules: ParsedModule[] = [];
-
         for (const module of modules) {
             const keys = await this.parseModule(module, supportedLocales);
             parsedModules.push({
@@ -33,7 +32,6 @@ export class ArbParser {
                 keys,
             });
         }
-
         return parsedModules;
     }
 
@@ -42,7 +40,6 @@ export class ArbParser {
 
         for (const arbFile of module.arbFiles) {
             const content = await this.readArbFile(arbFile.path);
-
             for (const [key, value] of Object.entries(content)) {
                 // Skip metadata keys
                 if (key.startsWith('@@') || key.startsWith('@')) {
@@ -87,7 +84,6 @@ export class ArbParser {
         }
 
         const result: Record<string, PlaceholderInfo> = {};
-
         for (const [name, info] of Object.entries(placeholders)) {
             const placeholderInfo = info as Record<string, unknown>;
             result[name] = {
@@ -97,7 +93,6 @@ export class ArbParser {
                 optionalParameters: placeholderInfo.optionalParameters as Record<string, string> | undefined,
             };
         }
-
         return result;
     }
 
@@ -106,20 +101,13 @@ export class ArbParser {
      * e.g., "Hello {name}" -> ["name"]
      */
     static extractPlaceholders(text: string): string[] {
-        const regex = /\{([^},]+)\}/g;
+        const regex = /\{([^}]+)\}/g;
         const placeholders: string[] = [];
         let match;
-
         while ((match = regex.exec(text)) !== null) {
-            // Skip ICU syntax keywords
-            const value = match[1].trim();
-            if (!['plural', 'select', 'selectordinal'].includes(value)) {
-                placeholders.push(value);
-            }
+            placeholders.push(match[1]);
         }
-
-        // Remove duplicates
-        return [...new Set(placeholders)];
+        return placeholders;
     }
 
     /**
@@ -128,4 +116,8 @@ export class ArbParser {
     static hasIcuSyntax(text: string): boolean {
         return /\{[^}]+,\s*(plural|select|selectordinal)\s*,/.test(text);
     }
+
+    // static hasIcuSyntax(text: string): boolean {
+    //     return /\{[^}]+,\s*(plural|select)\s*,/.test(text);
+    // }
 }

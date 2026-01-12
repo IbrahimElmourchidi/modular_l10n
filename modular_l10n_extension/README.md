@@ -5,14 +5,14 @@
 </p>
 
 <p align="center">
-  <a href="https://marketplace.visualstudio.com/items?itemName=utanium.modular-flutter-l10n">
+  <a href="https://marketplace.visualstudio.com/items?itemName=UtaniumOrg.modular-flutter-l10n">
     <img src="https://img.shields.io/visual-studio-marketplace/v/utanium.modular-flutter-l10n?style=flat-square&label=VS%20Code%20Marketplace" alt="VS Code Marketplace Version">
   </a>
-  <a href="https://marketplace.visualstudio.com/items?itemName=utanium.modular-flutter-l10n">
+  <a href="https://marketplace.visualstudio.com/items?itemName=UtaniumOrg.modular-flutter-l10n">
     <img src="https://img.shields.io/visual-studio-marketplace/i/utanium.modular-flutter-l10n?style=flat-square" alt="VS Code Marketplace Installs">
   </a>
-  <a href="https://github.com/IbrahimElmourchidi/modular_flutter_l10n/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/IbrahimElmourchidi/modular_flutter_l10n?style=flat-square" alt="License">
+  <a href="https://github.com/IbrahimElmourchidi/modular_l10n/blob/main/modular_l10n_extension/LICENSE">
+    <img src="https://img.shields.io/github/license/IbrahimElmourchidi/modular_l10n?style=flat-square" alt="License">
   </a>
 </p>
 
