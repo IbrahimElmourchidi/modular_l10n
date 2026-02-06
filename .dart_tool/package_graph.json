@@ -5,7 +5,7 @@
   "packages": [
     {
       "name": "modular_l10n",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "dependencies": [
         "flutter",
         "flutter_localizations",

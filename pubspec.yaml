@@ -1,10 +1,10 @@
 name: modular_l10n
-description: A modular approach to Flutter localization with RTL support, locale utilities, and seamless module reuse across projects. Companion package for the Modular Flutter L10n VS Code extension.
-version: 1.0.0
-homepage: https://github.com/IbrahimElmourchidi/modular_flutter_l10n
-repository: https://github.com/IbrahimElmourchidi/modular_flutter_l10n
-issue_tracker: https://github.com/IbrahimElmourchidi/modular_flutter_l10n/issues
-documentation: https://github.com/IbrahimElmourchidi/modular_flutter_l10n#readme
+description: A modular Flutter localization package with RTL support, locale utilities, and cross-project module reuse.
+version: 1.0.1
+homepage: https://github.com/IbrahimElmourchidi/modular_l10n
+repository: https://github.com/IbrahimElmourchidi/modular_l10n
+issue_tracker: https://github.com/IbrahimElmourchidi/modular_l10n/issues
+documentation: https://github.com/IbrahimElmourchidi/modular_l10n#readme
 
 topics:
   - localization

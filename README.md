@@ -10,8 +10,8 @@
   <a href="https://pub.dev/packages/modular_l10n">
     <img src="https://img.shields.io/pub/popularity/modular_l10n?style=flat-square" alt="Popularity">
   </a>
-  <a href="https://github.com/IbrahimElmourchidi/modular_flutter_l10n/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/IbrahimElmourchidi/modular_flutter_l10n?style=flat-square" alt="License">
+  <a href="https://github.com/IbrahimElmourchidi/modular_l10n/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/IbrahimElmourchidi/modular_l10n?style=flat-square" alt="License">
   </a>
 </p>
 
@@ -72,6 +72,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return LocaleProvider(
       initialLocale: _locale,
+      onBeforeLocaleChanged: (locale) => S.load(locale),
       onLocaleChanged: (locale) {
         setState(() => _locale = locale);
       },
@@ -281,18 +282,18 @@ The extension provides:
 
 ## 📁 Complete Example
 
-See the [example](https://github.com/IbrahimElmourchidi/modular_flutter_l10n/tree/main/example) directory for a complete sample application.
+See the [example](https://github.com/IbrahimElmourchidi/modular_l10n/tree/main/example) directory for a complete sample application.
 
 ## 🐛 Issues & Contributions
 
 Found a bug or have a feature request?
 
-- [Report an issue](https://github.com/IbrahimElmourchidi/modular_flutter_l10n/issues)
-- [Contribute on GitHub](https://github.com/IbrahimElmourchidi/modular_flutter_l10n)
+- [Report an issue](https://github.com/IbrahimElmourchidi/modular_l10n/issues)
+- [Contribute on GitHub](https://github.com/IbrahimElmourchidi/modular_l10n)
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/IbrahimElmourchidi/modular_flutter_l10n/blob/main/LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/IbrahimElmourchidi/modular_l10n/blob/main/LICENSE) file for details.
 
 ---
 
