@@ -1,0 +1,17 @@
+{
+  "@@locale": "ar",
+  "@@last_modified": "2026-01-12T09:38:54.696Z",
+  "auth_email": "البريد الإلكتروني",
+  "auth_password": "كلمة المرور",
+  "auth_login": "تسجيل الدخول",
+  "auth_signup": "إنشاء حساب",
+  "auth_forgotPassword": "نسيت كلمة المرور؟",
+  "auth_welcomeBack": "مرحباً بعودتك، {name}!",
+  "auth_loginError": "البريد الإلكتروني أو كلمة المرور غير صحيحة. يرجى المحاولة مرة أخرى.",
+  "home_title": "الرئيسية",
+  "home_welcomeMessage": "مرحباً بك في تطبيقنا!",
+  "home_greeting": "مساء الخير، {name}!",
+  "home_itemCount": "{count, plural, =0{لا توجد عناصر} =1{عنصر واحد} other{{count} عناصر}}",
+  "home_searchPlaceholder": "بحث...",
+  "home_noResultsFound": "لم يتم العثور على نتائج"
+}

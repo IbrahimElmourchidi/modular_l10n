@@ -1,0 +1,17 @@
+{
+  "@@locale": "en",
+  "@@last_modified": "2026-01-12T09:38:54.697Z",
+  "auth_email": "Email",
+  "auth_password": "Password",
+  "auth_login": "Login",
+  "auth_signup": "Sign Up",
+  "auth_forgotPassword": "Forgot Password?",
+  "auth_welcomeBack": "Welcome back, {name}!",
+  "auth_loginError": "Invalid email or password. Please try again.",
+  "home_title": "Home",
+  "home_welcomeMessage": "Welcome to our app!",
+  "home_greeting": "Good {timeOfDay}, {name}!",
+  "home_itemCount": "{count, plural, =0{No items} =1{1 item} other{{count} items}}",
+  "home_searchPlaceholder": "Search...",
+  "home_noResultsFound": "No results found"
+}

@@ -1,0 +1,45 @@
+{
+  "@@locale": "en",
+  "@@context": "auth",
+  
+  "email": "Email",
+  "@email": {
+    "description": "Email field label"
+  },
+  
+  "password": "Password",
+  "@password": {
+    "description": "Password field label"
+  },
+  
+  "login": "Login",
+  "@login": {
+    "description": "Login button text"
+  },
+  
+  "signup": "Sign Up",
+  "@signup": {
+    "description": "Sign up button text"
+  },
+  
+  "forgotPassword": "Forgot Password?",
+  "@forgotPassword": {
+    "description": "Forgot password link text"
+  },
+  
+  "welcomeBack": "Welcome back, {name}!",
+  "@welcomeBack": {
+    "description": "Welcome message with user name",
+    "placeholders": {
+      "name": {
+        "type": "String",
+        "example": "John"
+      }
+    }
+  },
+  
+  "loginError": "Invalid email or password. Please try again.",
+  "@loginError": {
+    "description": "Error message for failed login"
+  }
+}

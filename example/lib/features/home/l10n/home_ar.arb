@@ -1,0 +1,11 @@
+{
+  "@@locale": "ar",
+  "@@context": "home",
+  
+  "title": "الرئيسية",
+  "welcomeMessage": "مرحباً بك في تطبيقنا!",
+  "greeting": "مساء الخير، {name}!",
+  "itemCount": "{count, plural, =0{لا توجد عناصر} =1{عنصر واحد} other{{count} عناصر}}",
+  "searchPlaceholder": "بحث...",
+  "noResultsFound": "لم يتم العثور على نتائج"
+}
