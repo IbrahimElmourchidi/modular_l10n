@@ -200,8 +200,11 @@ extension LocaleProviderExtension on BuildContext {
   /// ```dart
   /// context.setLocale(const Locale('ar'));
   /// ```
-  Future<void> setLocale(Locale locale) =>
-      LocaleProvider.of(this).setLocale(locale);
+  Future<void> setLocale(Locale locale) {
+    final state = findAncestorStateOfType<LocaleProviderState>();
+    assert(state != null, 'No LocaleProvider found in context');
+    return state!.setLocale(locale);
+  }
 
   /// Check if the current locale matches a language code.
   ///

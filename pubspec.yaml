@@ -1,6 +1,6 @@
 name: modular_l10n
 description: A modular Flutter localization package with RTL support, locale utilities, and cross-project module reuse.
-version: 1.0.1
+version: 1.0.2
 homepage: https://github.com/IbrahimElmourchidi/modular_l10n
 repository: https://github.com/IbrahimElmourchidi/modular_l10n
 issue_tracker: https://github.com/IbrahimElmourchidi/modular_l10n/issues

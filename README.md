@@ -16,21 +16,23 @@
 </p>
 
 <p align="center">
-  <b>Runtime utilities for modular Flutter localization with full RTL support.</b>
+  <b>Optional runtime utilities for modular Flutter localization with full RTL support.</b>
 </p>
 
 ---
 
-## ✨ Features
+> **This package is optional.** The [Modular Flutter Localization](https://marketplace.visualstudio.com/items?itemName=utanium.modular-flutter-l10n) VS Code extension works standalone with just `intl` as a dependency. Install this package only if you need `LocaleProvider`, `context.setLocale()`, or RTL utilities.
+
+## Features
 
 | Feature | Description |
 |---------|-------------|
-| 🌍 **RTL Support** | Built-in detection for Arabic, Hebrew, Urdu, and other RTL languages |
-| 🔄 **LocaleProvider** | Easy runtime locale switching with InheritedWidget |
-| 🛠️ **Locale Utilities** | Parse, match, and get display names for locales |
-| 📱 **Cross-Platform** | Works on Android, iOS, Web, macOS, Windows, and Linux |
+| **RTL Support** | Built-in detection for Arabic, Hebrew, Urdu, and other RTL languages |
+| **LocaleProvider** | Easy runtime locale switching with InheritedWidget |
+| **Locale Utilities** | Parse, match, and get display names for locales |
+| **Cross-Platform** | Works on Android, iOS, Web, macOS, Windows, and Linux |
 
-## 📦 Installation
+## Installation
 
 Add to your `pubspec.yaml`:
 
@@ -45,18 +47,17 @@ Then run:
 flutter pub get
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
-### 1. Wrap Your App with LocaleProvider
+### Using LocaleProvider
+
+Wrap your `MaterialApp` with `LocaleProvider` to enable `context.setLocale()` from anywhere:
 
 ```dart
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:modular_l10n/modular_l10n.dart';
 import 'generated/l10n/l10n.dart';
-
-void main() {
-  runApp(const MyApp());
-}
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -85,13 +86,6 @@ class _MyAppState extends State<MyApp> {
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
         ],
-        // Handle text direction for RTL languages
-        builder: (context, child) {
-          return Directionality(
-            textDirection: LocaleUtils.getTextDirection(_locale),
-            child: child!,
-          );
-        },
         home: const HomePage(),
       ),
     );
@@ -99,46 +93,65 @@ class _MyAppState extends State<MyApp> {
 }
 ```
 
-### 2. Change Locale from Anywhere
+Then change locale from anywhere:
 
 ```dart
-class LanguageSelector extends StatelessWidget {
+// In a button callback
+context.setLocale(const Locale('ar'));
+```
+
+And access translations in widgets with `S.of(context)`:
+
+```dart
+Text(S.of(context).auth.email)
+```
+
+### Without this package (Cubit example)
+
+You don't need this package to use the extension. Here's an example using a Cubit:
+
+```dart
+// locale_cubit.dart
+class LocaleCubit extends Cubit<Locale> {
+  LocaleCubit() : super(const Locale('en'));
+  void setLocale(Locale locale) => emit(locale);
+}
+
+// main.dart
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return PopupMenuButton<Locale>(
-      icon: const Icon(Icons.language),
-      onSelected: (locale) {
-        // Change locale using context extension
-        context.setLocale(locale);
-      },
-      itemBuilder: (context) => [
-        const PopupMenuItem(
-          value: Locale('en'),
-          child: Text('English'),
-        ),
-        const PopupMenuItem(
-          value: Locale('ar'),
-          child: Text('العربية'),
-        ),
-      ],
+    return BlocProvider(
+      create: (_) => LocaleCubit(),
+      child: BlocBuilder<LocaleCubit, Locale>(
+        builder: (context, locale) {
+          return MaterialApp(
+            locale: locale,
+            supportedLocales: S.supportedLocales,
+            localizationsDelegates: const [
+              S.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            home: const HomePage(),
+          );
+        },
+      ),
     );
   }
 }
+
+// Change locale from anywhere
+context.read<LocaleCubit>().setLocale(const Locale('ar'));
+
+// Access translations
+Text(S.of(context).auth.email)
 ```
 
-### 3. Check Current Locale
-
-```dart
-// Get current locale
-Locale current = context.currentLocale;
-
-// Check if current locale is Arabic
-if (context.isLocale('ar')) {
-  // Handle Arabic-specific logic
-}
-```
-
-## 🌐 RTL Support
+## RTL Support
 
 ### Check if Locale is RTL
 
@@ -168,8 +181,6 @@ TextDirection direction = locale.textDirection;
 
 ### Supported RTL Languages
 
-The package automatically detects these RTL languages:
-
 | Code | Language |
 |------|----------|
 | `ar` | Arabic |
@@ -183,12 +194,11 @@ The package automatically detects these RTL languages:
 | `ug` | Uyghur |
 | `dv` | Divehi |
 
-## 🛠️ Locale Utilities
+## Locale Utilities
 
 ### Parse Locale String
 
 ```dart
-// Supports multiple formats
 Locale locale1 = LocaleUtils.parseLocale('en');      // Locale('en')
 Locale locale2 = LocaleUtils.parseLocale('en_US');   // Locale('en', 'US')
 Locale locale3 = LocaleUtils.parseLocale('en-US');   // Locale('en', 'US')
@@ -214,13 +224,9 @@ String displayName = locale.displayName;     // "Arabic"
 
 // Native name
 String nativeName = locale.nativeName;       // "العربية"
-
-// Or using static methods
-String displayName = LocaleUtils.getDisplayName(locale);
-String nativeName = LocaleUtils.getNativeName(locale);
 ```
 
-## 📖 API Reference
+## API Reference
 
 ### LocaleProvider
 
@@ -231,15 +237,23 @@ LocaleProvider({
   required Locale initialLocale,
   required Widget child,
   ValueChanged<Locale>? onLocaleChanged,
+  Future<void> Function(Locale)? onBeforeLocaleChanged,
 })
 ```
+
+| Parameter | Description |
+|-----------|-------------|
+| `initialLocale` | The initial locale to use |
+| `child` | The child widget (usually `MaterialApp`) |
+| `onLocaleChanged` | Called after the locale state is updated (use for persistence) |
+| `onBeforeLocaleChanged` | Async callback awaited before state update (use to pre-load translations via `S.load`) |
 
 ### LocaleProviderState
 
 | Method | Description |
 |--------|-------------|
 | `currentLocale` | Get the current locale |
-| `setLocale(Locale)` | Change the current locale |
+| `setLocale(Locale)` | Change the current locale (returns `Future<void>`) |
 | `isLocale(String)` | Check if current locale matches a language code |
 
 ### BuildContext Extensions
@@ -270,7 +284,7 @@ LocaleProvider({
 | `locale.displayName` | Get English display name |
 | `locale.nativeName` | Get native display name |
 
-## 🔗 VS Code Extension
+## VS Code Extension
 
 This package is designed to work with the [Modular Flutter Localization](https://marketplace.visualstudio.com/items?itemName=utanium.modular-flutter-l10n) VS Code extension.
 
@@ -280,23 +294,19 @@ The extension provides:
 - Commands to add keys and create modules
 - Modular organization by feature
 
-## 📁 Complete Example
-
-See the [example](https://github.com/IbrahimElmourchidi/modular_l10n/tree/main/example) directory for a complete sample application.
-
-## 🐛 Issues & Contributions
+## Issues & Contributions
 
 Found a bug or have a feature request?
 
 - [Report an issue](https://github.com/IbrahimElmourchidi/modular_l10n/issues)
 - [Contribute on GitHub](https://github.com/IbrahimElmourchidi/modular_l10n)
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](https://github.com/IbrahimElmourchidi/modular_l10n/blob/main/LICENSE) file for details.
 
 ---
 
 <p align="center">
-  Made with ❤️ by <a href="https://ibrahim.utanium.org">Utanium</a>
+  Made with care by <a href="https://ibrahim.utanium.org">Utanium</a>
 </p>
