@@ -1,0 +1,12 @@
+# Ignore all build and tool artifacts
+.dart_tool/
+.packages
+.pub/
+build/
+
+# Ignore lock files (standard for packages, though optional for apps)
+pubspec.lock
+
+# If you have an example folder, ignore its tool files too
+example/.dart_tool/
+example/pubspec.lock
