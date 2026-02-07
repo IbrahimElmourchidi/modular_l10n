@@ -5,11 +5,9 @@
   "packages": [
     {
       "name": "modular_l10n",
-      "version": "1.0.2",
+      "version": "2.0.0",
       "dependencies": [
-        "flutter",
-        "flutter_localizations",
-        "intl"
+        "flutter"
       ],
       "devDependencies": [
         "flutter_lints",
@@ -18,7 +16,7 @@
     },
     {
       "name": "flutter_lints",
-      "version": "3.0.2",
+      "version": "4.0.0",
       "dependencies": [
         "lints"
       ]
@@ -42,24 +40,6 @@
       ]
     },
     {
-      "name": "flutter_localizations",
-      "version": "0.0.0",
-      "dependencies": [
-        "flutter",
-        "intl",
-        "path"
-      ]
-    },
-    {
-      "name": "intl",
-      "version": "0.20.2",
-      "dependencies": [
-        "clock",
-        "meta",
-        "path"
-      ]
-    },
-    {
       "name": "flutter",
       "version": "0.0.0",
       "dependencies": [
@@ -73,7 +53,7 @@
     },
     {
       "name": "lints",
-      "version": "3.0.0",
+      "version": "4.0.0",
       "dependencies": []
     },
     {

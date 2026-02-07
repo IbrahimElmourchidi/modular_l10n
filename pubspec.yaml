@@ -1,6 +1,6 @@
 name: modular_l10n
-description: A modular Flutter localization package with RTL support, locale utilities, and cross-project module reuse.
-version: 1.0.2
+description: Lightweight locale utilities for Flutter with RTL detection, locale parsing, display names for 70+ languages. Works standalone or with Modular Flutter L10n extension.
+version: 2.0.0
 homepage: https://github.com/IbrahimElmourchidi/modular_l10n
 repository: https://github.com/IbrahimElmourchidi/modular_l10n
 issue_tracker: https://github.com/IbrahimElmourchidi/modular_l10n/issues
@@ -22,17 +22,14 @@ platforms:
   windows:
 
 environment:
-  sdk: '>=3.0.0 <4.0.0'
-  flutter: '>=3.10.0'
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=3.10.0"
 
 dependencies:
   flutter:
-    sdk: flutter
-  intl: ^0.20.2
-  flutter_localizations:
     sdk: flutter
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^3.0.0
+  flutter_lints: ^4.0.0

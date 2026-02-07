@@ -1,3 +1,7 @@
+## 2.0.0
+
+- simplified the package and removed the local provider widget
+
 ## 1.0.2
 
 - Reverted context.currentLocale / context.isLocale() back to LocaleProvider.of(this) — no longer needed for the fix
